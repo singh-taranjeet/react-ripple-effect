@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { RippleEffect } from 'react-ripple-effect';
+import { Ripple } from 'react-ripple-effect';
 
 const App = () => {
   return (
     <div>
-      <RippleEffect>
+      <Ripple>
         <button>Example Ripple Effect</button>
-      </RippleEffect>
+      </Ripple>
     </div>
   );
 }

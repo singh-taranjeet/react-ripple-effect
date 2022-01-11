@@ -13,12 +13,9 @@ interface StyleType {
   backgroundColor: string
 }
 
-interface RippleEffectType {
-  during?: number;
-  onClick?: (event: React.MouseEvent<any>) => {};
+interface RippleEffectType extends React.HTMLProps<HTMLDivElement>  {
+  animationDuration?: number;
   color?: string;
-  children: React.ReactNode;
-  className?: string;
 }
 
 const defaultProps: StyleType = {
@@ -35,11 +32,11 @@ const defaultProps: StyleType = {
   backgroundColor: "rgba(0, 0, 0, 30%)",
 };
 
-export const RippleEffect = (props: RippleEffectType) => {
+export const Ripple = (props: RippleEffectType) => {
 
   const [style, setStyle] = useState<StyleType>(defaultProps);
 
-  const { during = 550, color, onClick = () => {}, className="", children } = props;
+  const { animationDuration = 550, color, children, className="" } = props;
 
   function onClickRipple(event: React.MouseEvent<HTMLDivElement>) {
 
@@ -49,31 +46,31 @@ export const RippleEffect = (props: RippleEffectType) => {
 
     const rect = currentTarget.getBoundingClientRect();
 
-    const left = pageX - (rect.left + window.scrollX);
-    const top = pageY - (rect.top + window.scrollY);
     const size = Math.max(rect.width, rect.height);
+    const top = pageY - (rect.top + window.scrollY);
+    const left = pageX - (rect.left + window.scrollX);
 
     setStyle({
       ...style,
-      left,
-      top,
-      opacity: 1,
       transform: 'translate(-50%, -50%)',
       transition: 'initial',
       backgroundColor: color ? color : style.backgroundColor,
+      left,
+      top,
+      opacity: 1,
     });
 
     setTimeout(() => {
       setStyle({
         ...style,
+        transition: `all ${animationDuration}ms`,
         opacity: 0,
-        transform: `scale(${size / 9})`,
-        transition: `all ${during}ms`,
+        transform: `scale(${size / 9})`
       })
     }, 50);
 
-    if(onClick) {
-      onClick(event);
+    if(props.onClick) {
+      props.onClick(event);
     }
 
   }
