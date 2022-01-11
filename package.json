@@ -1,6 +1,6 @@
 {
   "name": "@minimal_ui/react-ripple-effect",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "create react ripple in any element",
   "author": "singh-taranjeet",
   "license": "MIT",
@@ -27,7 +27,13 @@
   "peerDependencies": {
     "react": "^16.0.0"
   },
-  "keywords": ["react", "ripple", "ripple-effect", "minimal", "zero dependency"],
+  "keywords": [
+    "react",
+    "ripple",
+    "ripple-effect",
+    "minimal",
+    "zero dependency"
+  ],
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
