@@ -83,15 +83,15 @@ export const RippleEffect = (props: RippleEffectType) => {
     <div
       {...props}
       className={`${className}`.trim()}
-      style={boxStyle}
+      style={{
+        position: 'relative',
+        display: 'inline-flex',
+        overflow: 'hidden',
+      }}
       onClick={onClickRipple}
     >
       {children}
-      <s style={{
-    position: 'relative',
-    display: 'inline-flex',
-    overflow: 'hidden',
-  }} />
+      <s style={style} />
     </div>
   )
 
