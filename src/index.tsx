@@ -32,7 +32,7 @@ const defaultProps: StyleType = {
   transform: 'translate(-50%, -50%)',
   transition: "",
   pointerEvents: 'none',
-  backgroundColor: "rgba(0, 0, 0, .3)",
+  backgroundColor: "rgba(0, 0, 0, 30%)",
 };
 
 export const RippleEffect = (props: RippleEffectType) => {
