@@ -27,6 +27,7 @@
   "peerDependencies": {
     "react": "^16.0.0"
   },
+  "keywords": ["react", "ripple", "ripple-effect", "minimal", "zero dependency"],
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
