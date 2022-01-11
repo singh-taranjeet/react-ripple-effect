@@ -1,10 +1,15 @@
 import React from 'react'
 
-import { ExampleComponent } from 'react-ripple-effect'
-import 'react-ripple-effect/dist/index.css'
+import { Ripple } from 'react-ripple-effect';
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return (
+    <div>
+      <Ripple>
+        <button>Example Ripple Effect</button>
+      </Ripple>
+    </div>
+  );
 }
 
 export default App

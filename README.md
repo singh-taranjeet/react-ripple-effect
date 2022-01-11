@@ -13,16 +13,19 @@ npm install --save react-ripple-effect
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import React from 'react'
 
-import MyComponent from 'react-ripple-effect'
-import 'react-ripple-effect/dist/index.css'
+import { Ripple } from 'react-ripple-effect';
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const App = () => {
+  return (
+    <Ripple>
+        <button>Example Ripple Effect</button>
+    </Ripple>
+  );
 }
+
+export default App;
 ```
 
 ## License
