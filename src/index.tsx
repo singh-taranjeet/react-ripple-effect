@@ -32,14 +32,14 @@ const defaultProps: StyleType = {
   transform: 'translate(-50%, -50%)',
   transition: "",
   pointerEvents: 'none',
-  backgroundColor: "",
+  backgroundColor: "rgba(0, 0, 0, .3)",
 };
 
 export const RippleEffect = (props: RippleEffectType) => {
 
   const [style, setStyle] = useState<StyleType>(defaultProps);
 
-  const { during = 550, color='rgba(0, 0, 0, .3)', onClick = () => {},   className="", children } = props;
+  const { during = 550, color, onClick = () => {}, className="", children } = props;
 
   function onClickRipple(event: React.MouseEvent<HTMLDivElement>) {
 
@@ -60,8 +60,7 @@ export const RippleEffect = (props: RippleEffectType) => {
       opacity: 1,
       transform: 'translate(-50%, -50%)',
       transition: 'initial',
-      backgroundColor: color,
-      
+      backgroundColor: color ? color : style.backgroundColor,
     });
 
     setTimeout(() => {
