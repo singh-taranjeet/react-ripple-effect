@@ -1,11 +1,13 @@
 # @minimal_ui/react-ripple
 
-> create react ripple in any element. Very minimal library with 0 dependency and based on react hooks.
+> create react ripple in any element.
+> Typescript support
+> Css animation
+> Minimal size bundle
+> Based on efficient react-hooks
+> 0 dependencies
 
 [![NPM](https://img.shields.io/npm/v/@minimal_ui/react-ripple.svg)](https://www.npmjs.com/package/@minimal_ui/react-ripple) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
-# Demo
-> [DEMO](https://codesandbox.io/s/keen-pine-urlqs?file=/src/App.js)
 
 # Demo
 > [DEMO](https://codesandbox.io/s/keen-pine-urlqs?file=/src/App.js)
@@ -25,15 +27,7 @@ import { Ripple } from "@minimal_ui/react-ripple";
 export default function App() {
   return (
     <div className="App">
-      <h1>React Ripple effect demo</h1>
-
-      <ul>
-        <li>Zero dependency</li>
-        <li>Minimal size</li>
-        <li>Easy to use</li>
-        <li>Based on react hooks</li>
-      </ul>
-
+      
       <h2>Basic usage:</h2>
 
       <Ripple>
