@@ -7,6 +7,9 @@
 # Demo
 > [DEMO](https://codesandbox.io/s/keen-pine-urlqs?file=/src/App.js)
 
+# Demo
+> [DEMO](https://codesandbox.io/s/keen-pine-urlqs?file=/src/App.js)
+
 ## Install
 
 ```bash
