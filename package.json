@@ -1,6 +1,6 @@
 {
-  "name": "react-ripple-effect",
-  "version": "1.0.0",
+  "name": "@minimal_ui/react-ripple-effect",
+  "version": "1.0.4",
   "description": "create react ripple in any element",
   "author": "singh-taranjeet",
   "license": "MIT",
@@ -21,11 +21,19 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "pub": "npm version patch && npm run build && npm publish --access=public"
   },
   "peerDependencies": {
     "react": "^16.0.0"
   },
+  "keywords": [
+    "react",
+    "ripple",
+    "ripple-effect",
+    "minimal",
+    "zero dependency"
+  ],
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
