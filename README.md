@@ -1,8 +1,11 @@
-# react-ripple-effect
+# @minimal_ui/react-ripple
 
 > create react ripple in any element. Very minimal library with 0 dependency and based on react hooks.
 
-[![NPM](https://img.shields.io/npm/v/react-ripple-effect.svg)](https://www.npmjs.com/package/react-ripple-effect) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/@minimal_ui/react-ripple.svg)](https://www.npmjs.com/package/@minimal_ui/react-ripple) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+# Demo
+> [DEMO](https://codesandbox.io/s/keen-pine-urlqs?file=/src/App.js)
 
 # Demo
 > [DEMO](https://codesandbox.io/s/keen-pine-urlqs?file=/src/App.js)
@@ -10,14 +13,14 @@
 ## Install
 
 ```bash
-npm install --save @minimal_ui/react-ripple-effect
+npm install --save @minimal_ui/react-ripple
 ```
 
 ## Usage
 
 ```tsx
 import "./styles.scss";
-import { Ripple } from "@minimal_ui/react-ripple-effect";
+import { Ripple } from "@minimal_ui/react-ripple";
 
 export default function App() {
   return (
