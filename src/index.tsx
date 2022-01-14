@@ -83,6 +83,7 @@ export const Ripple = (props: RippleEffectType) => {
         position: 'relative',
         display: 'inline-flex',
         overflow: 'hidden',
+        width: "fit-content"
       }}
       onClick={onClickRipple}
     >
