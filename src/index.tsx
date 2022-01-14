@@ -75,9 +75,15 @@ export const Ripple = (props: RippleEffectType) => {
 
   }
 
+  const divProps = {
+    ...props,
+    animationDuration: undefined,
+    color: undefined
+  }
+
   return (
     <div
-      {...props}
+      {...divProps}
       className={`${className}`.trim()}
       style={{
         position: 'relative',
