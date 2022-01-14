@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './index.css';
 interface StyleType {
   position: 'absolute';
   borderRadius: '50%';
