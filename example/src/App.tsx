@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div>
       <Ripple>
-        <button>Example Ripple Effect</button>
+        <button className="button">Example Ripple Effect</button>
       </Ripple>
     </div>
   );
