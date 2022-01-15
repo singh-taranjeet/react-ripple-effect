@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { CSSProperties, useState } from 'react';
 interface StyleType {
   position: 'absolute';
   borderRadius: '50%';
@@ -13,9 +13,12 @@ interface StyleType {
   backgroundColor: string
 }
 
-interface RippleEffectType extends React.HTMLProps<HTMLDivElement>  {
+interface RippleEffectType  {
   animationDuration?: number;
   color?: string;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => {},
+  children: React.ReactNode,
+  className?: string
 }
 
 const defaultProps: StyleType = {
@@ -75,22 +78,17 @@ export const Ripple = (props: RippleEffectType) => {
 
   }
 
-  const divProps = {
-    ...props,
-    animationDuration: undefined,
-    color: undefined
+  const rippleStyle: CSSProperties = {
+    position: 'relative',
+    display: 'inline-flex',
+    overflow: 'hidden',
+    width: 'fit-content'
   }
 
   return (
     <div
-      {...divProps}
       className={`${className}`.trim()}
-      style={{
-        position: 'relative',
-        display: 'inline-flex',
-        overflow: 'hidden',
-        width: 'fit-content'
-      }}
+      style={rippleStyle}
       onClick={onClickRipple}
     >
       {children}
