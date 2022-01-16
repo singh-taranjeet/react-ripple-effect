@@ -18,7 +18,8 @@ interface RippleEffectType  {
   color?: string;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => {},
   children: React.ReactNode,
-  className?: string
+  className?: string,
+  borderRadius?: string
 }
 
 const defaultProps: StyleType = {
@@ -39,7 +40,7 @@ export const Ripple = (props: RippleEffectType) => {
 
   const [style, setStyle] = useState<StyleType>(defaultProps);
 
-  const { animationDuration = 550, color, children, className="" } = props;
+  const { animationDuration = 550, color, children, className="", borderRadius="0%" } = props;
 
   function onClickRipple(event: React.MouseEvent<HTMLDivElement>) {
 
@@ -82,7 +83,8 @@ export const Ripple = (props: RippleEffectType) => {
     position: 'relative',
     display: 'inline-flex',
     overflow: 'hidden',
-    width: 'fit-content'
+    width: 'fit-content',
+    borderRadius
   }
 
   return (
