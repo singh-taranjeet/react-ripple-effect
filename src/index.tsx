@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { CSSProperties, useState } from 'react';
 interface StyleType {
   position: 'absolute';
   borderRadius: '50%';
@@ -13,9 +13,14 @@ interface StyleType {
   backgroundColor: string
 }
 
-interface RippleEffectType extends React.HTMLProps<HTMLDivElement>  {
+interface RippleEffectType  {
   animationDuration?: number;
   color?: string;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => {},
+  children: React.ReactNode,
+  className?: string,
+  borderRadius?: string,
+  centeredRipple?: boolean
 }
 
 const defaultProps: StyleType = {
@@ -36,7 +41,7 @@ export const Ripple = (props: RippleEffectType) => {
 
   const [style, setStyle] = useState<StyleType>(defaultProps);
 
-  const { animationDuration = 550, color, children, className="" } = props;
+  const { animationDuration = 550, color, children, className="", borderRadius="0%", centeredRipple= false } = props;
 
   function onClickRipple(event: React.MouseEvent<HTMLDivElement>) {
 
@@ -47,8 +52,8 @@ export const Ripple = (props: RippleEffectType) => {
     const rect = currentTarget.getBoundingClientRect();
 
     const size = Math.max(rect.width, rect.height);
-    const top = pageY - (rect.top + window.scrollY);
-    const left = pageX - (rect.left + window.scrollX);
+    const top = centeredRipple ? rect.height/2 : pageY - (rect.top + window.scrollY);
+    const left = centeredRipple ? rect.width/2 : pageX - (rect.left + window.scrollX);
 
     setStyle({
       ...style,
@@ -75,15 +80,18 @@ export const Ripple = (props: RippleEffectType) => {
 
   }
 
+  const rippleStyle: CSSProperties = {
+    position: 'relative',
+    display: 'inline-flex',
+    overflow: 'hidden',
+    width: 'fit-content',
+    borderRadius
+  }
+
   return (
     <div
-      {...props}
       className={`${className}`.trim()}
-      style={{
-        position: 'relative',
-        display: 'inline-flex',
-        overflow: 'hidden',
-      }}
+      style={rippleStyle}
       onClick={onClickRipple}
     >
       {children}

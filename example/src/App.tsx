@@ -4,9 +4,9 @@ import { Ripple } from 'react-ripple-effect';
 
 const App = () => {
   return (
-    <div>
-      <Ripple>
-        <button>Example Ripple Effect</button>
+    <div className="ripple">
+      <Ripple centeredRipple={false}>
+        <button className="button">Example Ripple Effect</button>
       </Ripple>
     </div>
   );
