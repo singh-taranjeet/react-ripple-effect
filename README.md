@@ -18,13 +18,17 @@
 npm install --save @minimal_ui/react-ripple
 ```
 
-## Usage
+## Basic Usage
 
 ```tsx
-import "./styles.scss";
-import { Ripple } from "@minimal_ui/react-ripple";
+import React from 'react'
 
-export default function App() {
+import { Ripple, dispatchRipple } from 'react-ripple-effect';
+
+const App = () => {
+
+  const ref = React.createRef<HTMLDivElement>();
+
   return (
     <div className="App">
       
@@ -33,10 +37,15 @@ export default function App() {
       <Ripple>
         <button className="btn">Basic usage</button>
       </Ripple>
+    </div>
+  );
+}
 
-      <br />
+```
 
-      <h2>Custom color:</h2>
+## Custom Color
+
+```tsx
 
       <div className="flex sb">
         <Ripple color="#48c78e">
@@ -52,7 +61,11 @@ export default function App() {
         </Ripple>
       </div>
 
-      <h2>Custom Animation duration:</h2>
+```
+
+## Custom Animation duration
+
+```tsx
 
       <div className="flex sb">
         <Ripple animationDuration={2000}>
@@ -67,10 +80,43 @@ export default function App() {
           <button className="btn blue">default Animation(550ms)</button>
         </Ripple>
       </div>
-    </div>
-  );
-}
 
+```
+
+## Rounded ripple
+
+```tsx
+
+      <Ripple borderRadius={"5px"}>
+        <button className="btn green">Centered ripple</button>
+      </Ripple>
+```
+
+## Centered Ripple
+
+```tsx
+
+      <Ripple centeredRipple borderRadius={"50%"}>
+        <button className="btn red round">0</button>
+      </Ripple>
+
+      
+```
+
+## Ripple on custom event
+```tsx
+
+      import { Ripple, dispatchRipple } from 'react-ripple-effect';
+
+      return (
+        <>
+          <Ripple forwardRef={ref}>
+            <button className="red btn">Click button for ripple</button>
+          </Ripple>
+
+          <button className="btn ml-20" onClick={() => dispatchRipple(ref)}>Press to ripple on red button</button>
+        </>
+      );
 ```
 
 ## License

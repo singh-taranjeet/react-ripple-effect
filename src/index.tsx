@@ -1,4 +1,4 @@
-import React, { CSSProperties, useState } from 'react';
+import React, { CSSProperties, useEffect, useState, } from "react";
 interface StyleType {
   position: 'absolute';
   borderRadius: '50%';
@@ -20,7 +20,8 @@ interface RippleEffectType  {
   children: React.ReactNode,
   className?: string,
   borderRadius?: string,
-  centeredRipple?: boolean
+  centeredRipple?: boolean,
+  forwardRef?: React.RefObject<HTMLDivElement>
 }
 
 const defaultProps: StyleType = {
@@ -37,11 +38,15 @@ const defaultProps: StyleType = {
   backgroundColor: "rgba(0, 0, 0, 30%)",
 };
 
+const CENTERED_RIPPLE_EVENT = "MUT-BUBBLE-EVENT";
+
 export const Ripple = (props: RippleEffectType) => {
 
   const [style, setStyle] = useState<StyleType>(defaultProps);
+  const [id] = useState((Math.random() + 1).toString(36).substring(7));
+  const [rippleFromCenter, setRippleFromCenter] = useState<boolean>(false);
 
-  const { animationDuration = 550, color, children, className="", borderRadius="0%", centeredRipple= false } = props;
+  const { animationDuration = 550, color, children, className="", borderRadius="0%" } = props;
 
   function onClickRipple(event: React.MouseEvent<HTMLDivElement>) {
 
@@ -52,8 +57,8 @@ export const Ripple = (props: RippleEffectType) => {
     const rect = currentTarget.getBoundingClientRect();
 
     const size = Math.max(rect.width, rect.height);
-    const top = centeredRipple ? rect.height/2 : pageY - (rect.top + window.scrollY);
-    const left = centeredRipple ? rect.width/2 : pageX - (rect.left + window.scrollX);
+    const top = (rippleFromCenter) ? rect.height/2 : pageY - (rect.top + window.scrollY);
+    const left = (rippleFromCenter) ? rect.width/2 : pageX - (rect.left + window.scrollX);
 
     setStyle({
       ...style,
@@ -74,10 +79,14 @@ export const Ripple = (props: RippleEffectType) => {
       })
     }, 50);
 
+    // unset ripple from center
+    if(!props.centeredRipple) {
+      setRippleFromCenter(false);
+    }
+
     if(props.onClick) {
       props.onClick(event);
     }
-
   }
 
   const rippleStyle: CSSProperties = {
@@ -88,9 +97,27 @@ export const Ripple = (props: RippleEffectType) => {
     borderRadius
   }
 
+  function createBubble(e: any) {
+    setRippleFromCenter(true);
+    setTimeout(() => {
+      e.target.click();
+    });
+  }
+
+  useEffect(() => {
+    // Add event listener 
+    props?.forwardRef?.current?.addEventListener(CENTERED_RIPPLE_EVENT, createBubble);
+    return () => {
+      // Remove event listener
+      props?.forwardRef?.current?.addEventListener(CENTERED_RIPPLE_EVENT, createBubble);
+    }
+  }, [props.forwardRef])
+
   return (
     <div
-      className={`${className}`.trim()}
+      ref={props.forwardRef}
+      id={id}
+      className={`mut-ripple ${className}`.trim()}
       style={rippleStyle}
       onClick={onClickRipple}
     >
@@ -99,4 +126,9 @@ export const Ripple = (props: RippleEffectType) => {
     </div>
   )
 
+}
+
+export function dispatchRipple(ref: React.RefObject<HTMLDivElement>) {
+    const newEvent = new Event(CENTERED_RIPPLE_EVENT);
+    ref.current?.dispatchEvent(newEvent);
 }
