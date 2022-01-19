@@ -1,9 +1,12 @@
 import React from 'react'
 
-import { Ripple } from 'react-ripple-effect';
+import { Ripple, dispatchRipple } from 'react-ripple-effect';
 import './index.css';
 
 const App = () => {
+
+  const ref = React.createRef<HTMLDivElement>();
+
   return (
     <div className="App">
       <h1>React Ripple effect demo</h1>
@@ -13,6 +16,7 @@ const App = () => {
         <li>Minimal size</li>
         <li>Easy to use</li>
         <li>Based on react hooks</li>
+        <li>Ripple using react ref</li>
       </ul>
 
       <h2>Basic usage:</h2>
@@ -64,6 +68,14 @@ const App = () => {
       <Ripple centeredRipple borderRadius={"50%"}>
         <button className="btn red round">0</button>
       </Ripple>
+
+      <h2>Ripple on custom event</h2>
+      <Ripple forwardRef={ref}>
+        <button className="red btn">Click button for ripple</button>
+      </Ripple>
+
+      <button className="btn ml-20" onClick={() => dispatchRipple(ref)}>Press to ripple on red button</button>
+
     </div>
   );
 }
