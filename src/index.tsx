@@ -111,7 +111,11 @@ export const Ripple = (props: RippleEffectType) => {
       // Remove event listener
       props?.forwardRef?.current?.addEventListener(CENTERED_RIPPLE_EVENT, createBubble);
     }
-  }, [props.forwardRef])
+  }, [props.forwardRef]);
+
+  useEffect(() => {
+    setRippleFromCenter(!!props.centeredRipple);
+  }, [props.centeredRipple])
 
   return (
     <div
